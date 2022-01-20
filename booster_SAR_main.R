@@ -2,13 +2,13 @@ library(tidyverse)
 library(broom)
 
 # Get Data
-source("get_data_sar.R")
-indirect_analysis_data <- get_data_sar(table_name = "Covid19Households_sar_households")
+source("get_booster_data_sar.R")
+indirect_analysis_data <- get_booster_data_sar(table_name = "Covid19Households_booster_sar_households")
 
 # Factorize
 data <- data %>%
   mutate(across(c(hh_first_covid_city_type_6, hh_first_covid_district_code, 
-                  hh_first_covid_sector), 
+                  hh_first_covid_sector, week_start), 
                 factor))
 
 # Fit model
